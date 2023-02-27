@@ -1,8 +1,9 @@
+import TodoItem from "./TodoItem";
 const TodoList = ( { todoProps } ) => {
     return (
         <ul>
         {todoProps.map((todo) =>(
-            <li>{todo.title}</li>
+            <TodoItem key={todo.id} itemProp={todo} />
         ))}
         </ul>
     )
