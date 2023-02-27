@@ -32,6 +32,15 @@ const TodosLogic = () => {
         }))
     };
 
+    const addTodoItem = (title) => {
+        const newTodo = {
+          id: 4,
+          title: title,
+          completed: false,
+        };
+        setTodos([...todos, newTodo]);
+      };
+
     const delTodo = (id) => {
         setTodos([
             ...todos.filter((todo) => {
@@ -43,7 +52,7 @@ const TodosLogic = () => {
 
     return (
         <div>
-        <InputTodo />
+        <InputTodo addTodoItem={addTodoItem} />
         <TodosList todoProps={todos} handleChange={handleChange} 
         delTodo={delTodo}
         />
