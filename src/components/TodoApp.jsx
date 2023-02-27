@@ -1,7 +1,10 @@
-const TodoApp = () => (
-  <div>
-    <h1>Hello world!</h1>
-    <p>I am in a React Component!</p>
-  </div>
-);
+import Header from "./Header";
+
+const TodoApp = () => {
+  return (
+    <>
+    <Header />
+    </>
+  )
+}
 export default TodoApp;
