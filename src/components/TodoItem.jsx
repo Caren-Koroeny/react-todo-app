@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import { FaTrash } from 'react-icons/fa';
@@ -39,12 +40,12 @@ const TodoItem = ({
           checked={itemProp.completed}
           onChange={() => handleChange(itemProp.id)}
         />
-        <button onClick={handleEditing}>
+        <button type="submit" onClick={handleEditing}>
           <AiFillEdit
             style={{ color: '#5e5e5e', fontSize: '16px' }}
           />
         </button>
-        <button onClick={() => delTodo(itemProp.id)}>
+        <button type="submit" onClick={() => delTodo(itemProp.id)}>
           <FaTrash style={{ color: '#5e5e5e', fontSize: '16px' }} />
         </button>
         <span style={itemProp.completed ? completedStyle : null} />
@@ -62,6 +63,17 @@ const TodoItem = ({
     </li>
 
   );
+};
+
+TodoItem.propTypes = {
+  itemProp: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
 };
 
 export default TodoItem;
