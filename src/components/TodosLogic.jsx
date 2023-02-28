@@ -4,13 +4,13 @@ import InputTodo from './InputTodo';
 import TodosList from './TodoList';
 
 const TodosLogic = () => {
-  const [todos, setTodos] = useState(getInitialTodos());
   function getInitialTodos() {
     // getting stored items
     const temp = localStorage.getItem('todos');
     const savedTodos = JSON.parse(temp);
     return savedTodos || [];
   }
+  const [todos, setTodos] = useState(getInitialTodos());
   useEffect(() => {
     // storing todos items
     const temp = JSON.stringify(todos);
@@ -28,6 +28,11 @@ const TodosLogic = () => {
       return todo;
     }));
   };
+  const delTodo = (id) => {
+    setTodos([
+      ...todos.filter((todo) => todo.id !== id),
+    ]);
+  };
 
   const addTodoItem = (title) => {
     const newTodo = {
@@ -38,12 +43,6 @@ const TodosLogic = () => {
     setTodos([...todos, newTodo]);
   };
 
-  const delTodo = (id) => {
-    setTodos([
-      ...todos.filter((todo) => todo.id !== id),
-    ]);
-    console.log('deleted', id);
-  };
   const setUpdate = (updatedTitle, id) => {
     setTodos(
       todos.map((todo) => {
