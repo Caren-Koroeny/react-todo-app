@@ -51,7 +51,7 @@ const TodosLogic = () => {
           ]);
         console.log('deleted', id);
       };
-      const setUpdate = (updatedTitile, id) => {
+      const setUpdate = (updatedTitle, id) => {
         setTodos(
             todos.map((todo) => {
               if (todo.id === id) {
